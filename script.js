@@ -26,35 +26,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Enhanced header with holographic effects
+    // Optimized scroll handler with throttling
     const header = document.querySelector('.header');
+    const heroContent = document.querySelector('.hero-content');
+    const heroVisual = document.querySelector('.hero-visual');
+    const mockup = document.querySelector('.dashboard-mockup');
+    
+    let ticking = false;
     let lastScrollY = window.scrollY;
 
-    window.addEventListener('scroll', () => {
+    function updateScrollEffects() {
         const currentScrollY = window.scrollY;
         const scrollProgress = Math.min(currentScrollY / 200, 1);
         
+        // Header effects with CSS classes instead of inline styles
         if (currentScrollY > 100) {
-            header.style.background = `rgba(0, 5, 16, ${0.85 + scrollProgress * 0.1})`;
-            header.style.backdropFilter = 'blur(25px) saturate(180%)';
-            header.style.borderBottom = `1px solid rgba(14, 165, 233, ${0.2 + scrollProgress * 0.2})`;
-            header.style.boxShadow = `0 0 30px rgba(14, 165, 233, ${scrollProgress * 0.2})`;
+            header.classList.add('scrolled');
+            header.style.setProperty('--scroll-progress', scrollProgress);
         } else {
-            header.style.background = 'transparent';
-            header.style.backdropFilter = 'blur(20px) saturate(180%)';
-            header.style.borderBottom = 'none';
-            header.style.boxShadow = 'none';
+            header.classList.remove('scrolled');
         }
 
-        // Add parallax effect to hero elements
-        const heroElements = document.querySelectorAll('.hero-content, .hero-visual');
-        heroElements.forEach((element, index) => {
-            const speed = 0.5 + index * 0.2;
-            element.style.transform = `translateY(${currentScrollY * speed * 0.3}px)`;
-        });
+        // Optimized parallax with reduced calculations
+        if (heroContent && heroVisual) {
+            const parallaxOffset = currentScrollY * 0.15;
+            heroContent.style.transform = `translate3d(0, ${parallaxOffset}px, 0)`;
+            heroVisual.style.transform = `translate3d(0, ${parallaxOffset * 0.7}px, 0)`;
+        }
+
+        // Reduced mockup transforms
+        if (mockup && currentScrollY < window.innerHeight) {
+            const mockupOffset = currentScrollY * -0.1;
+            mockup.style.transform = `translate3d(0, ${mockupOffset}px, 0)`;
+        }
 
         lastScrollY = currentScrollY;
-    });
+        ticking = false;
+    }
+
+    function requestScrollUpdate() {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollEffects);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
 
     // Enhanced animation with holographic reveals
     const observerOptions = {
@@ -193,25 +210,8 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(holographicTypeWriter, 800);
     }
 
-    // Enhanced parallax with 3D holographic transforms
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const heroVisual = document.querySelector('.hero-visual');
-        const mockup = document.querySelector('.dashboard-mockup');
-        
-        if (heroVisual && mockup) {
-            const rate = scrolled * -0.2;
-            const rotationX = Math.min(scrolled * 0.02, 10);
-            const rotationY = Math.sin(scrolled * 0.001) * 3;
-            
-            heroVisual.style.transform = `translateY(${rate}px)`;
-            mockup.style.transform = `translateY(${rate * 0.5}px) rotateX(${rotationX}deg) rotateY(${rotationY}deg) perspective(1000px)`;
-            
-            // Add depth-based glow effect
-            const glowIntensity = Math.min(scrolled * 0.001, 0.5);
-            mockup.style.filter = `drop-shadow(0 0 ${20 + scrolled * 0.05}px rgba(14, 165, 233, ${0.3 + glowIntensity}))`;
-        }
-    });
+    // Mobile detection for performance optimization
+    const isMobile = window.innerWidth <= 768 || /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
     // Add hover effect to dashboard mockup status cards
     document.querySelectorAll('.status-card').forEach(card => {
@@ -267,11 +267,16 @@ function createScanLines() {
     document.body.appendChild(scanLines);
 }
 
-// Create floating particle field
+// Create optimized particle field
 function createParticleField() {
-    const particleCount = 30;
+    // Reduce particle count on mobile for better performance
+    const particleCount = isMobile ? 8 : 20;
     const particles = document.createElement('div');
     particles.className = 'particle-field';
+    
+    if (isMobile) {
+        particles.style.opacity = '0.3'; // Reduce visibility on mobile
+    }
     
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
@@ -279,7 +284,7 @@ function createParticleField() {
         particle.style.left = Math.random() * 100 + '%';
         particle.style.top = Math.random() * 100 + '%';
         particle.style.animationDelay = Math.random() * 10 + 's';
-        particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+        particle.style.animationDuration = (Math.random() * 5 + 15) + 's'; // Slower on mobile
         particles.appendChild(particle);
     }
     

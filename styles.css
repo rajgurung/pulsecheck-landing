@@ -110,6 +110,14 @@ body::before {
     top: 0;
     z-index: 50;
     transition: all 0.3s ease;
+    will-change: background, border, box-shadow;
+    --scroll-progress: 0;
+}
+
+.header.scrolled {
+    background: rgba(0, 5, 16, calc(0.85 + var(--scroll-progress) * 0.1));
+    border-bottom: 1px solid rgba(14, 165, 233, calc(0.2 + var(--scroll-progress) * 0.2));
+    box-shadow: 0 0 30px rgba(14, 165, 233, calc(var(--scroll-progress) * 0.2));
 }
 
 .nav {
@@ -237,6 +245,12 @@ body::before {
     align-items: center;
     padding: var(--space-20) 0;
     min-height: 80vh;
+}
+
+.hero-content,
+.hero-visual {
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
 }
 
 .hero-badge {
@@ -401,6 +415,9 @@ body::before {
     backdrop-filter: blur(20px);
     position: relative;
     animation: float 6s ease-in-out infinite;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    contain: layout;
 }
 
 @keyframes float {
@@ -1132,6 +1149,7 @@ body::before {
     .dashboard-mockup {
         max-width: 100%;
         margin: 0 var(--space-4);
+        animation: none; /* Disable floating animation on mobile */
     }
 
     .feature-card {
@@ -1144,6 +1162,27 @@ body::before {
 
     .section-subtitle {
         font-size: var(--font-size-base);
+    }
+
+    /* Disable expensive effects on mobile */
+    .scan-lines {
+        display: none;
+    }
+    
+    .hero-content,
+    .hero-visual {
+        will-change: auto;
+    }
+    
+    /* Reduce backdrop blur intensity on mobile */
+    .header {
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+    
+    /* Simplify card animations */
+    .feature-card:hover {
+        transform: translateY(-2px);
     }
 }
 
@@ -1191,17 +1230,19 @@ body::before {
     opacity: 0.3;
     animation: particle-float 15s linear infinite;
     box-shadow: 0 0 6px var(--accent-primary);
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
 }
 
 @keyframes particle-float {
     0% {
-        transform: translateY(100vh) translateX(0) rotate(0deg);
+        transform: translate3d(0, 100vh, 0);
         opacity: 0;
     }
     10% { opacity: 0.3; }
     90% { opacity: 0.3; }
     100% {
-        transform: translateY(-100vh) translateX(100px) rotate(360deg);
+        transform: translate3d(50px, -100vh, 0);
         opacity: 0;
     }
 }
