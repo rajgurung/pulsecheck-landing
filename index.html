@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PulseCheck - Smart Heartbeat Monitoring</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="nav">
+                <div class="logo">
+                    <div class="monitor-signal">
+                        <svg class="signal-line" viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                            <polyline points="0,10 15,10 20,2 25,10 30,10 35,18 40,10 45,10 50,2 55,10 100,10" 
+                                     stroke="currentColor" 
+                                     stroke-width="3" 
+                                     fill="none"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="brand">PulseCheck</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <button class="cta-button">Join Waitlist</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-text">Early Access Available</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Stop guessing why your<br>
+                    <span class="gradient-text">background jobs fail</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    PulseCheck monitors your services with simple signal pings and explains failures 
+                    in plain English using AI. No complex setup, no alert fatigue — just clarity.
+                </p>
+                
+                <div class="hero-cta">
+                    <button class="primary-button">
+                        <span>Join Early Access</span>
+                        <svg class="arrow-icon" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div class="social-proof">
+                        <span class="proof-text">Limited spots available for early access</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="dashboard-mockup">
+                    <div class="mockup-header">
+                        <div class="mockup-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="mockup-title">PulseCheck Dashboard</div>
+                    </div>
+                    <div class="mockup-content">
+                        <div class="status-grid">
+                            <div class="status-card healthy">
+                                <div class="status-indicator"></div>
+                                <div class="status-info">
+                                    <span class="service-name">user-sync</span>
+                                    <span class="status-text">Healthy</span>
+                                </div>
+                            </div>
+                            <div class="status-card warning">
+                                <div class="status-indicator"></div>
+                                <div class="status-info">
+                                    <span class="service-name">email-queue</span>
+                                    <span class="status-text">Delayed</span>
+                                </div>
+                            </div>
+                            <div class="status-card error">
+                                <div class="status-indicator"></div>
+                                <div class="status-info">
+                                    <span class="service-name">backup-job</span>
+                                    <span class="status-text">Failed</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ai-insight">
+                            <div class="insight-header">
+                                <span class="ai-badge">AI Insight</span>
+                            </div>
+                            <p class="insight-text">
+                                Your backup-job failed due to insufficient disk space. 
+                                The email-queue is delayed because of high CPU usage during peak hours.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="section-header">
+                <h2 class="section-title">Built for developers who value simplicity</h2>
+                <p class="section-subtitle">
+                    Stop wrestling with complex monitoring tools. PulseCheck gives you the insights you need, when you need them.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <h3 class="feature-title">Simple Signal Monitoring</h3>
+                    <p class="feature-description">
+                        Just ping our endpoint when your job runs. No agents, no complex configuration.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🧠</div>
+                    <h3 class="feature-title">AI Explanations</h3>
+                    <p class="feature-description">
+                        Get plain-English explanations of failures, patterns, and recommendations.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">Searchable Timeline</h3>
+                    <p class="feature-description">
+                        Explore your service history with powerful filtering and search capabilities.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🧰</div>
+                    <h3 class="feature-title">CLI Integration</h3>
+                    <p class="feature-description">
+                        Send heartbeats from cron jobs, scripts, and CI/CD pipelines effortlessly.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3 class="feature-title">Smart Alerts</h3>
+                    <p class="feature-description">
+                        Get notified when it matters, not when a metric briefly spikes.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💸</div>
+                    <h3 class="feature-title">Indie Pricing</h3>
+                    <p class="feature-description">
+                        Transparent, affordable pricing designed for solo developers and small teams.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Use Cases Section -->
+        <section class="use-cases">
+            <div class="section-header">
+                <h2 class="section-title">Perfect for your workflow</h2>
+            </div>
+
+            <div class="use-cases-grid">
+                <div class="use-case">
+                    <h4>Indie Developers</h4>
+                    <p>Monitor your side project's background jobs without the enterprise overhead.</p>
+                </div>
+                <div class="use-case">
+                    <h4>Small Teams</h4>
+                    <p>Get everyone on the same page with shared dashboards and AI summaries.</p>
+                </div>
+                <div class="use-case">
+                    <h4>Cron Maintainers</h4>
+                    <p>Finally know when your scheduled tasks fail silently.</p>
+                </div>
+                <div class="use-case">
+                    <h4>Automation Builders</h4>
+                    <p>Add monitoring to your scripts without changing how they work.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="pricing">
+            <div class="section-header">
+                <h2 class="section-title">Simple, transparent pricing</h2>
+                <p class="section-subtitle">Start free, upgrade when you need more</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3 class="plan-name">Free</h3>
+                    <div class="plan-price">$0<span class="price-period">/month</span></div>
+                    <ul class="plan-features">
+                        <li>1 project</li>
+                        <li>24h data retention</li>
+                        <li>Basic dashboard</li>
+                        <li>Email alerts</li>
+                    </ul>
+                    <button class="plan-button">Join Waitlist</button>
+                </div>
+
+                <div class="pricing-card featured">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3 class="plan-name">Indie</h3>
+                    <div class="plan-price">$5<span class="price-period">/month</span></div>
+                    <ul class="plan-features">
+                        <li>3 projects</li>
+                        <li>7 days retention</li>
+                        <li>30 AI summaries/month</li>
+                        <li>CLI access</li>
+                        <li>Slack integration</li>
+                    </ul>
+                    <button class="plan-button">Get Early Access</button>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 class="plan-name">Team</h3>
+                    <div class="plan-price">$15<span class="price-period">/month</span></div>
+                    <ul class="plan-features">
+                        <li>10 projects</li>
+                        <li>14 days retention</li>
+                        <li>300 AI summaries/month</li>
+                        <li>Team sharing</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <button class="plan-button">Request Access</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="final-cta">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to simplify your monitoring?</h2>
+                <p class="cta-subtitle">
+                    Join hundreds of developers who've already reduced their monitoring stress.
+                </p>
+                <button class="primary-button large">
+                    <span>Get Early Access</span>
+                    <svg class="arrow-icon" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="logo">
+                        <div class="monitor-signal">
+                            <svg class="signal-line" viewBox="0 0 100 20" xmlns="http://www.w3.org/2000/svg">
+                                <polyline points="0,10 15,10 20,2 25,10 30,10 35,18 40,10 45,10 50,2 55,10 100,10" 
+                                         stroke="currentColor" 
+                                         stroke-width="3" 
+                                         fill="none"
+                                         stroke-linecap="round"
+                                         stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <span class="brand">PulseCheck</span>
+                    </div>
+                    <p class="footer-tagline">Signal monitoring that actually helps.</p>
+                </div>
+                <div class="footer-right">
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Documentation</a>
+                        <a href="#" class="footer-link">API</a>
+                        <a href="#" class="footer-link">Support</a>
+                        <a href="#" class="footer-link">Privacy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
