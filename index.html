@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PulseCheck - Smart Heartbeat Monitoring</title>
+    <title>PulseCheck - Service Health & Performance Monitoring</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -44,12 +44,12 @@
                 
                 <h1 class="hero-title">
                     Stop guessing why your<br>
-                    <span class="gradient-text">background jobs fail</span>
+                    <span class="gradient-text">services go down</span>
                 </h1>
                 
                 <p class="hero-subtitle">
-                    PulseCheck monitors your services with simple signal pings and explains failures 
-                    in plain English using AI. No complex setup, no alert fatigue — just clarity.
+                    PulseCheck monitors your web services, background jobs, and queues with smart health checks. 
+                    Track availability, performance, and job queue metrics with AI-powered insights — no complex setup required.
                 </p>
                 
                 <div class="hero-cta">
@@ -80,21 +80,21 @@
                             <div class="status-card healthy">
                                 <div class="status-indicator"></div>
                                 <div class="status-info">
-                                    <span class="service-name">user-sync</span>
-                                    <span class="status-text">Healthy</span>
+                                    <span class="service-name">web-app</span>
+                                    <span class="status-text">142ms avg</span>
                                 </div>
                             </div>
                             <div class="status-card warning">
                                 <div class="status-indicator"></div>
                                 <div class="status-info">
-                                    <span class="service-name">email-queue</span>
-                                    <span class="status-text">Delayed</span>
+                                    <span class="service-name">job-queue</span>
+                                    <span class="status-text">3.2s latency</span>
                                 </div>
                             </div>
                             <div class="status-card error">
                                 <div class="status-indicator"></div>
                                 <div class="status-info">
-                                    <span class="service-name">backup-job</span>
+                                    <span class="service-name">email-worker</span>
                                     <span class="status-text">Failed</span>
                                 </div>
                             </div>
@@ -104,8 +104,8 @@
                                 <span class="ai-badge">AI Insight</span>
                             </div>
                             <p class="insight-text">
-                                Your backup-job failed due to insufficient disk space. 
-                                The email-queue is delayed because of high CPU usage during peak hours.
+                                Your email worker failed due to SMTP timeout. Job queue latency is high because 
+                                of increased job volume. Web app performance is within normal range.
                             </p>
                         </div>
                     </div>
@@ -125,17 +125,17 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">📡</div>
-                    <h3 class="feature-title">Simple Signal Monitoring</h3>
+                    <h3 class="feature-title">Universal Health Checks</h3>
                     <p class="feature-description">
-                        Just ping our endpoint when your job runs. No agents, no complex configuration.
+                        Monitor web apps, background jobs, and queues with simple HTTP pings. No agents required.
                     </p>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">🧠</div>
-                    <h3 class="feature-title">AI Explanations</h3>
+                    <h3 class="feature-title">AI Performance Insights</h3>
                     <p class="feature-description">
-                        Get plain-English explanations of failures, patterns, and recommendations.
+                        Get plain-English explanations of outages, latency spikes, and queue bottlenecks.
                     </p>
                 </div>
 
@@ -151,7 +151,7 @@
                     <div class="feature-icon">🧰</div>
                     <h3 class="feature-title">CLI Integration</h3>
                     <p class="feature-description">
-                        Send heartbeats from cron jobs, scripts, and CI/CD pipelines effortlessly.
+                        Send health checks from web apps, background workers, cron jobs, and CI/CD pipelines.
                     </p>
                 </div>
 
@@ -182,7 +182,7 @@
             <div class="use-cases-grid">
                 <div class="use-case">
                     <h4>Indie Developers</h4>
-                    <p>Monitor your side project's background jobs without the enterprise overhead.</p>
+                    <p>Monitor your web app uptime, job queues, and background workers without enterprise complexity.</p>
                 </div>
                 <div class="use-case">
                     <h4>Small Teams</h4>
