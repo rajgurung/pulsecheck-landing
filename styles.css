@@ -561,7 +561,8 @@ body::before {
 
 .status-text {
     font-size: var(--font-size-xs);
-    color: var(--text-muted);
+    color: var(--text-secondary);
+    font-weight: 500;
 }
 
 .ai-insight {
