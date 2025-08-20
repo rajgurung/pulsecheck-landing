@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const originalHTML = heroTitle.innerHTML;
         const textParts = [
             { text: 'Stop guessing why your', isGradient: false },
-            { text: 'background jobs fail', isGradient: true }
+            { text: 'services go down', isGradient: true }
         ];
         
         heroTitle.innerHTML = '';
