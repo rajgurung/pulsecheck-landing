@@ -1,5 +1,5 @@
 // Vercel API Route for PulseCheck Signup
-// Securely handles email signups and integrates with ConvertKit
+// Securely handles email signups and integrates with Airtable
 
 export default async function handler(req, res) {
     // Set CORS headers for security
@@ -49,43 +49,48 @@ export default async function handler(req, res) {
             });
         }
 
-        // ConvertKit API Integration
-        const convertKitApiKey = process.env.CONVERTKIT_API_KEY;
-        const convertKitFormId = process.env.CONVERTKIT_FORM_ID;
+        // Airtable API Integration
+        const airtableApiKey = process.env.AIRTABLE_API_KEY;
+        const airtableBaseId = process.env.AIRTABLE_BASE_ID;
+        const airtableTableName = process.env.AIRTABLE_TABLE_NAME || 'Signups';
 
-        if (!convertKitApiKey || !convertKitFormId) {
-            console.error('Missing ConvertKit environment variables');
+        if (!airtableApiKey || !airtableBaseId) {
+            console.error('Missing Airtable environment variables');
             return res.status(500).json({
                 error: 'Configuration error',
-                message: 'Email service is not properly configured'
+                message: 'Database service is not properly configured'
             });
         }
 
-        // Subscribe to ConvertKit
-        const convertKitResponse = await fetch(`https://api.convertkit.com/v3/forms/${convertKitFormId}/subscribe`, {
+        // Create signup record in Airtable
+        const airtableResponse = await fetch(`https://api.airtable.com/v0/${airtableBaseId}/${airtableTableName}`, {
             method: 'POST',
             headers: {
+                'Authorization': `Bearer ${airtableApiKey}`,
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                api_key: convertKitApiKey,
-                email: email,
-                tags: [plan, 'pulsecheck-signup'], // Tag with plan and source
-                fields: {
-                    plan_interest: plan,
-                    signup_date: new Date().toISOString(),
-                    source: 'landing_page'
-                }
+                records: [{
+                    fields: {
+                        'Email': email,
+                        'Plan': plan,
+                        'Signup Date': new Date().toISOString().split('T')[0], // YYYY-MM-DD format
+                        'Timestamp': new Date().toISOString(),
+                        'Source': 'Landing Page',
+                        'Status': 'New'
+                    }
+                }]
             })
         });
 
-        const convertKitData = await convertKitResponse.json();
+        const airtableData = await airtableResponse.json();
 
-        if (!convertKitResponse.ok) {
-            console.error('ConvertKit API error:', convertKitData);
+        if (!airtableResponse.ok) {
+            console.error('Airtable API error:', airtableData);
             
-            // Handle duplicate email gracefully
-            if (convertKitData.message && convertKitData.message.includes('already subscribed')) {
+            // Handle potential duplicate email (Airtable doesn't enforce uniqueness by default)
+            if (airtableData.error && airtableData.error.message && 
+                airtableData.error.message.includes('duplicate')) {
                 return res.status(200).json({
                     success: true,
                     message: 'Thanks! You\'re already on our list.',
@@ -94,7 +99,7 @@ export default async function handler(req, res) {
             }
             
             return res.status(500).json({
-                error: 'Email service error',
+                error: 'Database error',
                 message: 'Unable to process signup. Please try again.'
             });
         }
@@ -103,14 +108,15 @@ export default async function handler(req, res) {
         console.log('Successful signup:', { 
             email: email.replace(/(.{3}).*(@.*)/, '$1***$2'), // Partially hide email in logs
             plan, 
-            timestamp: new Date().toISOString() 
+            timestamp: new Date().toISOString(),
+            recordId: airtableData.records[0]?.id
         });
 
         // Return success response
         return res.status(200).json({
             success: true,
             message: 'Successfully joined the waitlist!',
-            subscriber_id: convertKitData.subscription?.subscriber?.id
+            recordId: airtableData.records[0]?.id
         });
 
     } catch (error) {

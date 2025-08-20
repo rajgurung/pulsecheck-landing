@@ -1,26 +1,38 @@
 # PulseCheck Signup Setup Guide
 
-## 🚀 Vercel Deployment with ConvertKit Integration
+## 🚀 Vercel Deployment with Airtable Integration
 
 ### Prerequisites
 - Vercel account (free tier works)
-- ConvertKit account (free up to 1000 subscribers)
+- Airtable account (free forever - up to 1,000 records)
 
-### 1. ConvertKit Setup
+### 1. Airtable Setup
 
-1. **Create ConvertKit Account**
-   - Go to [ConvertKit.com](https://convertkit.com)
-   - Sign up for free account
+1. **Create Airtable Account**
+   - Go to [Airtable.com](https://airtable.com)
+   - Sign up for free account (free forever!)
 
-2. **Get API Credentials**
-   - Go to [Account Settings > Advanced](https://app.convertkit.com/account_settings/advanced_settings)
-   - Copy your **API Key**
-   - Note: Keep this secure!
+2. **Create Your Base**
+   - Click "Create a base" → "Start from scratch"
+   - Name it "PulseCheck Signups" 
+   - Rename the table to "Signups"
 
-3. **Create a Form**
-   - Go to "Grow" > "Landing Pages & Forms"
-   - Create a new form (can be simple, we'll use API)
-   - Copy the **Form ID** from the form URL or settings
+3. **Set Up Table Structure**
+   Delete default fields and create these fields:
+   - **Email** (Single line text) - Primary field
+   - **Plan** (Single select: free, indie, team)
+   - **Signup Date** (Date)  
+   - **Timestamp** (Date and time)
+   - **Source** (Single line text)
+   - **Status** (Single select: New, Contacted, Converted)
+
+4. **Get API Credentials**
+   - Go to [Personal Access Tokens](https://airtable.com/create/tokens)
+   - Click "Create new token"
+   - Name: "PulseCheck API"
+   - Scopes: `data.records:write` (for your base)
+   - Copy the **Personal Access Token**
+   - Get **Base ID**: Go to your base → Help → API documentation → Copy Base ID
 
 ### 2. Vercel Environment Variables
 
@@ -30,13 +42,14 @@
    - Add these variables:
 
    ```
-   CONVERTKIT_API_KEY = your_actual_api_key_here
-   CONVERTKIT_FORM_ID = your_actual_form_id_here
+   AIRTABLE_API_KEY = your_personal_access_token_here
+   AIRTABLE_BASE_ID = your_base_id_here
+   AIRTABLE_TABLE_NAME = Signups
    ```
 
 2. **For Local Development:**
    - Copy `.env.example` to `.env.local`
-   - Fill in your ConvertKit credentials
+   - Fill in your Airtable credentials
    - Never commit `.env.local` to git
 
 ### 3. Test the Setup
@@ -44,7 +57,7 @@
 1. **Deploy to Vercel**
    ```bash
    git add .
-   git commit -m "Add ConvertKit signup integration"
+   git commit -m "Add Airtable signup integration"
    git push origin main
    ```
 
@@ -52,20 +65,21 @@
    - Visit your deployed site
    - Click any "Join Waitlist" button
    - Fill out the form with a test email
-   - Check ConvertKit for new subscriber
+   - Check Airtable for new record!
 
-### 4. ConvertKit Configuration
+### 4. Airtable Benefits
 
-**Recommended Tags to Create:**
-- `free` - For free plan signups  
-- `indie` - For indie plan signups
-- `team` - For team plan signups
-- `pulsecheck-signup` - For all signups from landing page
+**Visual Dashboard:**
+- See all signups in a beautiful spreadsheet view
+- Sort by date, plan, or any field
+- Add notes and track follow-up status
+- Export to CSV anytime
 
-**Set up Automation:**
-- Create welcome email sequence
-- Tag-based segmentation for different plans
-- Follow-up sequences based on interest level
+**Easy Management:**
+- Filter by plan interest (free, indie, team)
+- Track conversion from signup to customer
+- Add custom fields as needed
+- No email limits or restrictions
 
 ### 5. Monitoring & Analytics
 
@@ -74,10 +88,10 @@
 - View logs for `/api/signup` function
 - Monitor for errors or issues
 
-**ConvertKit Analytics:**
-- Track signup rates
-- Monitor email engagement
-- A/B test welcome sequences
+**Airtable Analytics:**
+- Visual charts and reports in Airtable
+- Track signup trends over time
+- Plan distribution analytics
 
 ### 6. Security Notes
 
@@ -91,7 +105,7 @@
 
 **Common Issues:**
 - **"Configuration error"**: Check environment variables are set in Vercel
-- **"Email service error"**: Verify ConvertKit API key and form ID
+- **"Database error"**: Verify Airtable API key and Base ID
 - **CORS errors**: Ensure API route is deployed properly
 
 **Testing Locally:**
@@ -101,13 +115,25 @@ vercel dev
 ```
 Then test at `http://localhost:3000`
 
-### 8. Next Steps
+### 8. Future Email Marketing
 
-1. **Email Sequences**: Set up automated welcome emails in ConvertKit
-2. **Analytics**: Add tracking for signup conversion rates  
-3. **A/B Testing**: Test different form copy and CTAs
-4. **Monitoring**: Set up alerts for signup errors
+**When Ready to Scale:**
+- Export your Airtable data to CSV
+- Import to ConvertKit, Mailchimp, or any email service
+- Your data is portable and not locked into any platform!
+
+**Automation Ideas:**
+- Use Zapier to connect Airtable to email services
+- Trigger welcome emails based on plan selection
+- Set up Slack notifications for new signups
+
+### 9. Next Steps
+
+1. **Growth Tracking**: Monitor signup rates and plan distribution
+2. **Analytics**: Add tracking for signup conversion rates
+3. **A/B Testing**: Test different form copy and CTAs  
+4. **Email Marketing**: When ready, export and import to email service
 
 ---
 
-🎉 **You're all set!** Your PulseCheck signup is now collecting real subscribers securely.
+🎉 **You're all set!** Your PulseCheck signup is now collecting real subscribers with Airtable - **free forever** for up to 1,000 signups!
