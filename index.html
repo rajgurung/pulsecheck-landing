@@ -3,7 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PulseCheck - Service Health & Performance Monitoring</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>PulseCheck - Service Health & Performance Monitoring for Developers</title>
+    <meta name="title" content="PulseCheck - Service Health & Performance Monitoring for Developers">
+    <meta name="description" content="Monitor web services, background jobs, and queues with AI-powered insights. Simple health checks, smart alerts, and plain-English explanations for indie developers.">
+    <meta name="keywords" content="service monitoring, uptime monitoring, performance monitoring, developer tools, site monitoring, API monitoring, cron monitoring, background jobs">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pulsecheck.dev/">
+    <meta property="og:title" content="PulseCheck - Service Health & Performance Monitoring">
+    <meta property="og:description" content="Monitor web services, background jobs, and queues with AI-powered insights. Get plain-English explanations when things go wrong.">
+    <meta property="og:image" content="https://pulsecheck.dev/og-image.png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://pulsecheck.dev/">
+    <meta property="twitter:title" content="PulseCheck - Service Health & Performance Monitoring">
+    <meta property="twitter:description" content="Monitor web services, background jobs, and queues with AI-powered insights. Get plain-English explanations when things go wrong.">
+    <meta property="twitter:image" content="https://pulsecheck.dev/og-image.png">
+    
+    <!-- Additional Meta Tags -->
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="PulseCheck">
+    <meta name="theme-color" content="#0ea5e9">
+    <meta name="msapplication-TileColor" content="#0ea5e9">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "PulseCheck",
+        "description": "Service health and performance monitoring with AI-powered insights for developers",
+        "url": "https://pulsecheck.dev",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "priceCurrency": "USD",
+            "price": "0",
+            "priceValidUntil": "2025-12-31"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "PulseCheck",
+            "url": "https://pulsecheck.dev"
+        }
+    }
+    </script>
+    
+    <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -173,6 +232,68 @@
             </div>
         </section>
 
+        <!-- How it Works Section -->
+        <section class="how-it-works">
+            <div class="section-header">
+                <h2 class="section-title">How PulseCheck Works</h2>
+                <p class="section-subtitle">Simple monitoring in three steps</p>
+            </div>
+
+            <div class="how-it-works-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Send Health Checks</h3>
+                        <p>Add a simple HTTP ping to your services, cron jobs, or background workers. Works with any programming language or framework.</p>
+                        <div class="code-preview">
+                            <code>curl https://api.pulsecheck.dev/ping/your-service-id</code>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Get Smart Alerts</h3>
+                        <p>Receive intelligent notifications when services fail or slow down. No alert fatigue - only get notified when it matters.</p>
+                        <div class="alert-preview">
+                            <div class="alert-icon">⚠️</div>
+                            <div class="alert-text">
+                                <strong>backup-job failed</strong><br>
+                                <span>Database connection timeout during peak hours</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Understand & Fix</h3>
+                        <p>Our AI explains what went wrong in plain English and suggests actionable fixes. No more guessing games.</p>
+                        <div class="insight-preview">
+                            <div class="insight-badge">AI Insight</div>
+                            <p>"Your email queue is delayed because CPU usage spiked to 95% during your daily backup. Consider running backups during off-peak hours."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="integration-showcase">
+                <h3>Works with everything you use</h3>
+                <div class="tech-logos">
+                    <span class="tech-item">Python</span>
+                    <span class="tech-item">Node.js</span>
+                    <span class="tech-item">Ruby</span>
+                    <span class="tech-item">Go</span>
+                    <span class="tech-item">PHP</span>
+                    <span class="tech-item">Cron</span>
+                    <span class="tech-item">Docker</span>
+                    <span class="tech-item">AWS</span>
+                </div>
+            </div>
+        </section>
+
         <!-- Use Cases Section -->
         <section class="use-cases">
             <div class="section-header">
@@ -248,6 +369,76 @@
             </div>
         </section>
 
+        <!-- FAQ Section -->
+        <section class="faq">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about PulseCheck</p>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How is PulseCheck different from other monitoring tools?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>PulseCheck focuses on simplicity and AI-powered insights. Unlike complex enterprise tools, we provide clear explanations of what went wrong and why, without overwhelming you with metrics. Perfect for indie developers who want monitoring that actually helps, not just alerts.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>What types of services can I monitor?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Monitor anything with our universal health checks: web applications, APIs, background workers, cron jobs, job queues, databases, and more. Works with any tech stack - Python, Node.js, Ruby, Go, or whatever you're building with.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How does the AI explanation feature work?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>When services fail or slow down, our AI analyzes patterns in your monitoring data and explains the likely cause in plain English. Instead of "HTTP 500", you get "Your database is overloaded during peak hours" with actionable next steps.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Is there a setup fee or long-term commitment?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No setup fees, no contracts. Start with our free plan and upgrade only when you need more projects or AI summaries. Cancel anytime. We believe monitoring should be accessible to every developer, not just enterprise teams.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>How quickly will I know when something goes wrong?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Typically within 1-2 minutes. We use smart detection to avoid false alarms - you'll get notified when there's a real issue, not when a metric briefly spikes. Notifications via email, Slack, or webhook.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h4>Can I export my monitoring data?</h4>
+                        <span class="faq-toggle">+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. Your data belongs to you. Export monitoring history, downtime reports, and performance metrics anytime. No vendor lock-in - if PulseCheck isn't working for you, take your data and go.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA Section -->
         <section class="final-cta">
             <div class="cta-content">
@@ -288,7 +479,22 @@
                         <a href="#" class="footer-link">Documentation</a>
                         <a href="#" class="footer-link">API</a>
                         <a href="#" class="footer-link">Support</a>
-                        <a href="#" class="footer-link">Privacy</a>
+                        <a href="#security" class="footer-link">Security</a>
+                        <a href="#privacy" class="footer-link">Privacy</a>
+                    </div>
+                    <div class="security-badges">
+                        <div class="security-item">
+                            <span class="security-icon">🔒</span>
+                            <span class="security-text">SOC 2 Ready</span>
+                        </div>
+                        <div class="security-item">
+                            <span class="security-icon">🛡️</span>
+                            <span class="security-text">GDPR Compliant</span>
+                        </div>
+                        <div class="security-item">
+                            <span class="security-icon">🔐</span>
+                            <span class="security-text">256-bit Encryption</span>
+                        </div>
                     </div>
                 </div>
             </div>
