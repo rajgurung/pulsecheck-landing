@@ -1,19 +1,19 @@
 # 🫀 PulseCheck
 
-**Smart heartbeat monitoring with AI-powered insights.**
+**Service health & performance monitoring with AI-powered insights.**
 
-PulseCheck helps developers monitor background jobs, scheduled tasks, and service uptime using simple heartbeat pings — and explains failures in plain English using LLMs.
+PulseCheck helps developers monitor web services, background jobs, job queues, and service performance using smart health checks — and explains outages, latency issues, and failures in plain English using LLMs.
 
-> Think of it like cron monitoring meets AI observability, designed for indie devs and small teams.
+> Think of it like comprehensive service monitoring meets AI observability, designed for indie devs and small teams.
 
 ---
 
 ## ✨ Features
 
-- 🔁 **Heartbeat Monitoring** – Track job or service health via HTTP pings
-- 🧠 **AI Digest Summaries** – LLM-powered explanations of missed, delayed, or flapping services
+- 🔁 **Universal Health Checks** – Track web apps, job queues, and service health via HTTP pings
+- 🧠 **AI Performance Insights** – LLM-powered explanations of outages, latency spikes, queue bottlenecks, and failures
 - 🔍 **Searchable Explorer** – Query and filter logs + heartbeat events by time, service, status
-- 🧰 **CLI Tool** – Send heartbeats and test integrations from local scripts and cron
+- 🧰 **CLI Tool** – Send health checks from web apps, background workers, scripts and cron
 - 🔔 **Smart Alerts** – Get notified when something stops working
 - 💸 **Simple Pricing** – Generous free tier + transparent indie pricing
 
@@ -21,11 +21,12 @@ PulseCheck helps developers monitor background jobs, scheduled tasks, and servic
 
 ## 🎯 Use Cases
 
-- Monitor recurring background jobs
-- Catch silent failures in cron scripts
-- Get explanations for service flapping or timeout patterns
-- Explore job logs and missed pings in a unified timeline
-- Use the CLI for local and CI-based heartbeat pinging
+- Monitor web app uptime and performance
+- Track job queue latency and processing metrics
+- Monitor recurring background jobs and cron scripts
+- Get AI explanations for service outages, latency spikes, and failures
+- Explore service health and performance in a unified timeline
+- Use the CLI for comprehensive health checks across your stack
 
 ---
 
@@ -71,8 +72,8 @@ PulseCheck helps developers monitor background jobs, scheduled tasks, and servic
 
 ## 🧠 Why PulseCheck?
 
-> Most monitoring tools tell you something failed.  
-> PulseCheck tells you *why* — in plain language, with full context.
+> Most monitoring tools tell you something failed or is slow.  
+> PulseCheck tells you *why* — in plain language, with full context and actionable insights.
 
 ---
 
