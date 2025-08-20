@@ -295,6 +295,42 @@
         </footer>
     </div>
 
+    <!-- Signup Modal -->
+    <div id="signup-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Join PulseCheck Early Access</h3>
+                <button class="modal-close" onclick="closeSignupModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Get notified when PulseCheck launches and receive early access to comprehensive service monitoring.</p>
+                <form id="signup-form" class="signup-form">
+                    <div class="form-group">
+                        <input type="email" id="email" placeholder="Enter your email address" required>
+                        <span class="form-error" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <select id="plan" required>
+                            <option value="">Select your interest level</option>
+                            <option value="free">Free Plan - Just exploring</option>
+                            <option value="indie">Indie Plan - Perfect for my projects ($5/mo)</option>
+                            <option value="team">Team Plan - For my team ($15/mo)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-button">
+                        <span>Join Waitlist</span>
+                        <div class="loading-spinner" style="display: none;"></div>
+                    </button>
+                </form>
+                <div id="success-message" style="display: none;">
+                    <div class="success-icon">✅</div>
+                    <h4>You're on the list!</h4>
+                    <p>Thanks for joining! We'll send you early access details soon.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
