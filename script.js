@@ -128,13 +128,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }, 600);
 
-            // Simulate action (replace with actual functionality)
-            console.log('Button clicked:', this.textContent.trim());
-            
-            // For demo purposes, show a simple alert
-            if (this.textContent.includes('Start') || this.textContent.includes('Join')) {
+            // Open signup modal for relevant buttons
+            const buttonText = this.textContent.trim();
+            if (buttonText.includes('Join') || buttonText.includes('Get') || buttonText.includes('Request') || buttonText.includes('Start')) {
                 setTimeout(() => {
-                    alert('Thanks for your interest! This would redirect to the signup page.');
+                    openSignupModal();
                 }, 200);
             }
         });
@@ -355,3 +353,159 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// Modal and Form Functionality
+function openSignupModal() {
+    const modal = document.getElementById('signup-modal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    // Focus on email input after animation
+    setTimeout(() => {
+        document.getElementById('email').focus();
+    }, 300);
+}
+
+function closeSignupModal() {
+    const modal = document.getElementById('signup-modal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    
+    // Reset form
+    resetSignupForm();
+}
+
+function resetSignupForm() {
+    const form = document.getElementById('signup-form');
+    const successMessage = document.getElementById('success-message');
+    
+    form.style.display = 'flex';
+    successMessage.style.display = 'none';
+    form.reset();
+    
+    // Clear any error messages
+    document.getElementById('email-error').style.display = 'none';
+    document.getElementById('email-error').textContent = '';
+}
+
+// Email validation function
+function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function showError(message) {
+    const errorElement = document.getElementById('email-error');
+    errorElement.textContent = message;
+    errorElement.style.display = 'block';
+    document.getElementById('email').style.borderColor = 'var(--error)';
+}
+
+function clearError() {
+    const errorElement = document.getElementById('email-error');
+    errorElement.style.display = 'none';
+    errorElement.textContent = '';
+    document.getElementById('email').style.borderColor = 'var(--border)';
+}
+
+// Form submission handler
+document.addEventListener('DOMContentLoaded', function() {
+    const signupForm = document.getElementById('signup-form');
+    
+    signupForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const email = document.getElementById('email').value.trim();
+        const plan = document.getElementById('plan').value;
+        const submitButton = document.querySelector('.submit-button');
+        const buttonText = submitButton.querySelector('span');
+        const spinner = submitButton.querySelector('.loading-spinner');
+        
+        // Clear any previous errors
+        clearError();
+        
+        // Validate email
+        if (!email) {
+            showError('Please enter your email address');
+            return;
+        }
+        
+        if (!validateEmail(email)) {
+            showError('Please enter a valid email address');
+            return;
+        }
+        
+        if (!plan) {
+            alert('Please select your interest level');
+            return;
+        }
+        
+        // Show loading state
+        submitButton.disabled = true;
+        buttonText.style.display = 'none';
+        spinner.style.display = 'block';
+        
+        try {
+            // Simulate API call (replace with actual endpoint)
+            await submitSignup(email, plan);
+            
+            // Show success message
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('success-message').style.display = 'block';
+            
+            // Auto-close modal after 3 seconds
+            setTimeout(() => {
+                closeSignupModal();
+            }, 3000);
+            
+        } catch (error) {
+            console.error('Signup error:', error);
+            showError('Something went wrong. Please try again.');
+        } finally {
+            // Reset button state
+            submitButton.disabled = false;
+            buttonText.style.display = 'block';
+            spinner.style.display = 'none';
+        }
+    });
+});
+
+// Real API call to Vercel serverless function
+async function submitSignup(email, plan) {
+    const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email: email,
+            plan: plan
+        })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.message || 'Signup failed');
+    }
+
+    return data;
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('signup-modal');
+    if (e.target === modal) {
+        closeSignupModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('signup-modal');
+        if (modal.style.display === 'flex') {
+            closeSignupModal();
+        }
+    }
+});
