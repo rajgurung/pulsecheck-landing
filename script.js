@@ -223,13 +223,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Mobile menu toggle (if needed in future)
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+    // Mobile menu toggle
+    const mobileMenuButton = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
     
     if (mobileMenuButton) {
         mobileMenuButton.addEventListener('click', () => {
+            mobileMenuButton.classList.toggle('active');
             navLinks.classList.toggle('mobile-open');
+        });
+        
+        // Close mobile menu when clicking on a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuButton.classList.remove('active');
+                navLinks.classList.remove('mobile-open');
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuButton.contains(e.target) && !navLinks.contains(e.target)) {
+                mobileMenuButton.classList.remove('active');
+                navLinks.classList.remove('mobile-open');
+            }
         });
     }
 
@@ -257,6 +274,17 @@ document.addEventListener('DOMContentLoaded', function() {
         showSystemOnlineNotification();
     }, 600);
 });
+
+// Global function for HTML onclick handler
+function toggleMobileMenu() {
+    const mobileMenuButton = document.querySelector('.mobile-menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileMenuButton && navLinks) {
+        mobileMenuButton.classList.toggle('active');
+        navLinks.classList.toggle('mobile-open');
+    }
+}
 
 // Create floating scan lines effect
 function createScanLines() {
